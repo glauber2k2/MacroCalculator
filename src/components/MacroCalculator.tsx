@@ -32,9 +32,9 @@ interface resultadoMacros {
 }
 
 const formSchema = z.object({
-  peso: z.string(),
-  altura: z.string(),
-  idade: z.string(),
+  peso: z.string().min(2).max(3),
+  altura: z.string().min(3).max(3),
+  idade: z.string().min(1).max(3),
   atividade: z.string(),
   sexo: z.string(),
   objetivo: z.string(),
@@ -137,9 +137,21 @@ export default function MacroCalculator() {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="1.2">Sedentário</SelectItem>
-                    <SelectItem value="1.55">Moderado</SelectItem>
-                    <SelectItem value="1.9">Ativo</SelectItem>
+                    <SelectItem value="1.2" title="Exercícios mínimos">
+                      Sedentário
+                    </SelectItem>
+                    <SelectItem value="1.375" title="1-3 dias por semana">
+                      Levemente ativo
+                    </SelectItem>
+                    <SelectItem value="1.55" title="3-5 dias por semana">
+                      Moderadamente ativo
+                    </SelectItem>
+                    <SelectItem value="1.725" title="6-7 dias por semana">
+                      Muito ativo
+                    </SelectItem>
+                    <SelectItem value="1.9" title="Atleta, 2x por dia">
+                      Extremamente ativo
+                    </SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -153,7 +165,7 @@ export default function MacroCalculator() {
               <FormItem>
                 <FormLabel>Peso</FormLabel>
                 <FormControl>
-                  <Input {...field} type="number" placeholder="00.00" />
+                  <Input {...field} placeholder="kg" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -166,7 +178,7 @@ export default function MacroCalculator() {
               <FormItem>
                 <FormLabel>Altura</FormLabel>
                 <FormControl>
-                  <Input {...field} type="number" placeholder="0.00" />
+                  <Input {...field} placeholder="cm" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -179,7 +191,7 @@ export default function MacroCalculator() {
               <FormItem>
                 <FormLabel>Idade</FormLabel>
                 <FormControl>
-                  <Input {...field} type="number" placeholder="00" />
+                  <Input {...field} placeholder="anos" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
