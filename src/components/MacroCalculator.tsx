@@ -64,7 +64,7 @@ export default function MacroCalculator() {
   return (
     <Card className="w-full sm:w-auto p-10 h-fit dark:border-opacity-0 sm:dark:border-opacity-100 border-opacity-0 sm:border-opacity-100">
       <span className="text-2xl font-semibold mb-4 pb-4 border-b border-neutral-300 dark:border-neutral-800 flex items-center gap-2">
-        <img src="/icon.png" className="object-scale-down w-10 h-10" />
+        <img src="/icon.png" className="invert dark:invert-0 object-scale-down w-10 h-10" />
         MacroCalculator
       </span>
       <Form {...form}>
