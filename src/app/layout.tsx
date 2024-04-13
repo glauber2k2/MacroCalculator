@@ -16,7 +16,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="ptBR">
+      <link rel="icon" href="/icon.png" />
+
       <body className={cn(inter.className, 'h-dvh sm:h-screen')}>
         {children}
       </body>
