@@ -2,7 +2,6 @@ interface MacroNutrientNeeds {
   calorias: number
   proteinas: number
   carboidratos: number
-  gorduras: number
 }
 
 interface UserFormData {
@@ -15,7 +14,7 @@ interface UserFormData {
 }
 
 export function calculateMacros(data: UserFormData): MacroNutrientNeeds {
-  const { peso, altura, atividade, sexo, objetivo, idade } = data
+  const { peso, altura, idade, sexo, atividade, objetivo } = data
 
   let gastoEnergeticoBasal: number
   if (sexo === 'masculino') {
@@ -35,7 +34,25 @@ export function calculateMacros(data: UserFormData): MacroNutrientNeeds {
     metaCalorias = totalGastoEnergetico
   }
 
+  let metaProteinasGramas: number
+  if (atividade > 1.375) {
+    metaProteinasGramas = peso * 2
+  } else {
+    metaProteinasGramas = peso * 1.5
+  }
+
+  let metaCarboGramas: number
+  if (objetivo == 'hipertrofia') {
+    metaCarboGramas = peso * 8
+  } else if (objetivo == 'manutenção') {
+    metaCarboGramas = totalGastoEnergetico * 0.5
+  } else {
+    metaCarboGramas = totalGastoEnergetico * 0.45
+  }
+
   return {
     calorias: parseFloat(metaCalorias.toFixed(2)),
+    proteinas: parseFloat(metaProteinasGramas.toFixed(2)),
+    carboidratos: parseFloat(metaCarboGramas.toFixed(2)),
   }
 }

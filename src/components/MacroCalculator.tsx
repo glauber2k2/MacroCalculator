@@ -28,7 +28,6 @@ interface resultadoMacros {
   calorias: number
   proteinas: number
   carboidratos: number
-  gorduras: number
 }
 
 const formSchema = z.object({
@@ -64,7 +63,10 @@ export default function MacroCalculator() {
   return (
     <Card className="w-full sm:w-auto p-10 h-fit dark:border-opacity-0 sm:dark:border-opacity-100 border-opacity-0 sm:border-opacity-100">
       <span className="text-2xl font-semibold mb-4 pb-4 border-b border-neutral-300 dark:border-neutral-800 flex items-center gap-2">
-        <img src="/icon.png" className="invert dark:invert-0 object-scale-down w-10 h-10" />
+        <img
+          src="/icon.png"
+          className="invert dark:invert-0 object-scale-down w-10 h-10"
+        />
         MacroCalculator
       </span>
       <Form {...form}>
@@ -137,20 +139,20 @@ export default function MacroCalculator() {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="1.2" title="Exercícios mínimos">
-                      Sedentário
+                    <SelectItem value="1.2" title="Sedentário">
+                      Exercícios mínimos
                     </SelectItem>
-                    <SelectItem value="1.375" title="1-3 dias por semana">
-                      Levemente ativo
+                    <SelectItem value="1.375" title="Levemente ativo">
+                      1-3 dias por semana
                     </SelectItem>
-                    <SelectItem value="1.55" title="3-5 dias por semana">
-                      Moderadamente ativo
+                    <SelectItem value="1.55" title="Moderadamente ativo">
+                      3-5 dias por semana
                     </SelectItem>
-                    <SelectItem value="1.725" title="6-7 dias por semana">
-                      Muito ativo
+                    <SelectItem value="1.725" title="Muito ativo">
+                      6-7 dias por semana
                     </SelectItem>
-                    <SelectItem value="1.9" title="Atleta, 2x por dia">
-                      Extremamente ativo
+                    <SelectItem value="1.9" title=" Extremamente ativo">
+                      Atleta, 2x por dia
                     </SelectItem>
                   </SelectContent>
                 </Select>
@@ -202,10 +204,9 @@ export default function MacroCalculator() {
             <div className="col-span-2 rounded text-xs mt-4">
               Para {form.getValues('objetivo')} você precisará de:
               <Card className="p-4 mt-1">
-                <li>{resultado.proteinas} proteinas,</li>
-                <li>{resultado.carboidratos} carboidratos,</li>
-                <li>{resultado.calorias} calorias,</li>
-                <li>{resultado.gorduras} de gordura.</li>
+                <li>{resultado.proteinas}g de proteinas,</li>
+                <li>{resultado.carboidratos}g de carboidratos,</li>
+                <li>{resultado.calorias} calorias.</li>
               </Card>
             </div>
           )}
